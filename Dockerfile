@@ -4,7 +4,7 @@
 FROM openjdk:24-jdk as builder
 
 # Establece el directorio de trabajo
-WORKDIR /app
+WORKDIR .
 
 # Copia el archivo JAR de la aplicación al contenedor
 COPY vivapulse/ .
@@ -20,7 +20,7 @@ RUN ./mvnw clean package -DskipTests
 FROM openjdk:24-jdk
 
 # Establece el directorio de trabajo
-WORKDIR /app
+WORKDIR .
 
 # Copia el archivo JAR construido desde la etapa anterior
 COPY --from=builder /app/target/*.jar app.jar

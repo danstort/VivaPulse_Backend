@@ -10,10 +10,10 @@ WORKDIR /app
 COPY vivapulse/ .
 
 # Dar permisos de ejecución al script mvnw
-RUN chmod +x mvnw
+RUN chmod +x ./mvnw
 
 # Construye la aplicación (ajusta el comando según tu herramienta de construcción)
-RUN mvnw clean package -DskipTests
+RUN ./mvnw clean package -DskipTests
 
 # ETAPA 2: Correr la app
 

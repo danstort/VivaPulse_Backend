@@ -10,7 +10,7 @@ WORKDIR /app
 COPY . .
 
 # Construye la aplicación (ajusta el comando según tu herramienta de construcción)
-RUN /vivapulse/.mvn clean package -DskipTests
+RUN ./vivapulse/mvnw clean package -DskipTests
 
 # ETAPA 2: Correr la app
 

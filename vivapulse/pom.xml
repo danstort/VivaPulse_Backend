@@ -50,9 +50,9 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
+    		<groupId>org.postgresql</groupId>
+    		<artifactId>postgresql</artifactId>
+    		<version>42.7.3</version> <!-- Asegúrate de tener una versión reciente -->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

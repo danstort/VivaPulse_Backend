@@ -9,6 +9,9 @@ WORKDIR /app
 # Copia el archivo JAR de la aplicación al contenedor
 COPY . .
 
+# Dar permisos de ejecución al script mvnw
+RUN chmod +x ./vivapulse/mvnw
+
 # Construye la aplicación (ajusta el comando según tu herramienta de construcción)
 RUN ./vivapulse/mvnw clean package -DskipTests
 

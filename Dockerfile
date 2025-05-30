@@ -7,7 +7,7 @@ FROM openjdk:24-jdk as builder
 WORKDIR /app
 
 # Copia el archivo JAR de la aplicación al contenedor
-COPY . .
+COPY vivapulse/ .
 
 # Dar permisos de ejecución al script mvnw
 RUN chmod +x ./vivapulse/mvnw

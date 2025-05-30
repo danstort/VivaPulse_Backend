@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "type": "java",
+      "name": "VivapulseApplication",
+      "request": "launch",
+      "mainClass": "com.vp.vivapulse.VivapulseApplication",
+      "projectName": "vivapulse",
+      "env": {
+        "URL_DB": "jdbc:postgresql://localhost:5432/vp",
+        "USERNAME_DB": "admin",
+        "PASSWORD_DB": "admin"
+        
+      }
+    }
+  ]
+}

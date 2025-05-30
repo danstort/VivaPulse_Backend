@@ -1,7 +1,7 @@
 # ETAPA 1: Construir la aplicación
 
 # Usa una imagen base de OpenJDK
-FROM openjdk:24-jdk-alpine as builder
+FROM openjdk:24-jdk as builder
 
 # Establece el directorio de trabajo
 WORKDIR /app
@@ -14,7 +14,7 @@ RUN ./mvn clean package -DskipTests
 
 # ETAPA 2: Correr la app
 
-FROM openjdk:24-jre-alpine
+FROM openjdk:24-jdk
 
 # Establece el directorio de trabajo
 WORKDIR /app

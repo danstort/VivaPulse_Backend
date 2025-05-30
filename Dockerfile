@@ -4,7 +4,7 @@
 FROM openjdk:17-jdk as builder
 
 # Establece el directorio de trabajo
-WORKDIR .
+WORKDIR /app
 
 # Copia el archivo JAR de la aplicación al contenedor
 COPY vivapulse/ .

@@ -46,7 +46,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173")); // Permitir solicitudes desde React
+        configuration.setAllowedOrigins(List.of("http://localhost:5173", "https://vivapulsefront.vercel.app")); // Permitir solicitudes desde React
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Métodos permitidos
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type")); // Encabezados permitidos
         configuration.setAllowCredentials(true); // Permitir credenciales (si es necesario)

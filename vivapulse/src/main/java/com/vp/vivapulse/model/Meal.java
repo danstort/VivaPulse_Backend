@@ -1,6 +1,8 @@
 package com.vp.vivapulse.model;
 
 
+import java.util.Date;
+
 import jakarta.persistence.*;
 
 
@@ -12,18 +14,25 @@ public class Meal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long idUser;
-    private Long idAliment;
+    private Long[] idAliment;
     private int calories;
-  
+    private Date createdAt = new Date();
+
+    @Column(nullable = true) // Indica que este campo es opcional
+    private String name;
+
     // Constructors
     public Meal() {}
 
-   
-    public Meal(Long idUser, Long idAliment, int calories) {
+
+    public Meal(Long idUser, Long[] idAliment, int calories, Date createdAt, String name) {
         this.idUser = idUser;
         this.idAliment = idAliment;
         this.calories = calories;
-    }   
+        this.createdAt = createdAt;
+        this.name = name;
+    }
+
     // Getters and Setters
     public Long getId() {
         return id;
@@ -37,10 +46,10 @@ public class Meal {
     public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
-    public Long getIdAliment() {
+    public Long[] getIdAliment() {
         return idAliment;
     }
-    public void setIdAliment(Long idAliment) {
+    public void setIdAliment(Long[] idAliment) {
         this.idAliment = idAliment;
     }
     public int getCalories() {
@@ -50,7 +59,18 @@ public class Meal {
         this.calories = calories;
     }
     
-    
-
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+   
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
 }

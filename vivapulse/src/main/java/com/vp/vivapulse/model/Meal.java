@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "training")
-public class Nutrition {
+@Table(name = "meals")
+public class Meal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +16,10 @@ public class Nutrition {
     private int calories;
   
     // Constructors
-    public Nutrition() {}
+    public Meal() {}
 
    
-    public Nutrition(Long idUser, Long idAliment, int calories) {
+    public Meal(Long idUser, Long idAliment, int calories) {
         this.idUser = idUser;
         this.idAliment = idAliment;
         this.calories = calories;

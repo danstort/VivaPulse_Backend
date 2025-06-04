@@ -2,21 +2,19 @@ package com.vp.vivapulse.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 
 @RestController
 @RequestMapping("/api/chat")
+@CrossOrigin(origins = "http://localhost:5173") // Permitir solicitudes desde el frontend
 public class ChatController {
-    private final RestTemplate restTemplate;
 
-    @Value("${openrouter.api.token}")
-    private String apiToken;
+    private final RestTemplate restTemplate;
 
     @Autowired
     public ChatController(RestTemplate restTemplate) {
@@ -24,20 +22,19 @@ public class ChatController {
     }
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> chat(@RequestBody Map<String, Object> request) {
+    public ResponseEntity<Map<String, String>> chat(@RequestBody Map<String, Object> request) {
         String userMessage = (String) request.get("message");
 
         List<Map<String, String>> messages = new ArrayList<>();
-        messages.add(Map.of("role", "system", "content",
-            "Eres un asistente experto en organización académica. Ayuda a los usuarios a usar su aplicación de planificación de estudios de manera eficiente."));
+        messages.add(Map.of("role", "system", "content", "Eres un asistente que ayuda en un TFG."));
         messages.add(Map.of("role", "user", "content", userMessage));
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Authorization", "Bearer " + apiToken);
+        headers.set("Authorization", "Bearer sk-XXX"); // Reemplaza aquí tu token
 
         Map<String, Object> body = Map.of(
-            "model", "openai/gpt-3.5-turbo", // Usa un modelo válido
+            "model", "openai/gpt-3.5-turbo", // Modelo válido
             "messages", messages,
             "max_tokens", 500,
             "temperature", 0.7
@@ -52,7 +49,6 @@ public class ChatController {
                 String.class
             );
 
-            // Parsear el JSON de la respuesta
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(response.getBody());
             String assistantMessage = root
@@ -62,13 +58,13 @@ public class ChatController {
                 .path("content")
                 .asText();
 
-            Map<String, Object> result = new HashMap<>();
+            Map<String, String> result = new HashMap<>();
             result.put("reply", assistantMessage);
             return ResponseEntity.ok(result);
 
         } catch (Exception e) {
             e.printStackTrace();
-            Map<String, Object> error = new HashMap<>();
+            Map<String, String> error = new HashMap<>();
             error.put("error", "No se pudo obtener respuesta del modelo.");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
         }

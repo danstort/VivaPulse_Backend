@@ -2,6 +2,7 @@ package com.vp.vivapulse.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.vp.vivapulse.model.Meal;
@@ -11,6 +12,7 @@ import com.vp.vivapulse.service.MealService;
 @RequestMapping("/api")
 public class MealController {
 
+    @Autowired
     MealService mealService;
 
     @GetMapping("/meals")
@@ -23,7 +25,7 @@ public class MealController {
         return mealService.getMealById(id);
     }
 
-    @GetMapping("/meals/{userId}")
+    @GetMapping("/meals/user/{userId}")
     public List<Meal> getMealsByUserId(@PathVariable Long userId) {
         return mealService.getMealsByUserId(userId);
     }

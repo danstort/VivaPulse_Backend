@@ -30,7 +30,7 @@ public class SecurityConfig {
             
             .csrf(csrf -> csrf.disable()) // Deshabilitar CSRF
             .authorizeHttpRequests(auth -> auth
-                 .requestMatchers("/api/aliments/**", "/api/trainings/**", "/api/auth/register", "/api/auth/authenticate").permitAll() // Permitir acceso público
+                 .requestMatchers("/api/aliments/**", "/api/trainings/**", "/api/auth/register", "/api/auth/authenticate", "/api/chat").permitAll() // Permitir acceso público
                  .requestMatchers("/api/admin/**").hasRole("ADMIN") // Acceso restringido para ADMIN
                  .anyRequest().authenticated() // Requerir autenticación para el resto
             )

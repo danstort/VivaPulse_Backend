@@ -11,7 +11,6 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/chat")
-@CrossOrigin(origins = "http://localhost:5173") // Permitir solicitudes desde el frontend
 public class ChatController {
 
     private final RestTemplate restTemplate;
@@ -34,7 +33,7 @@ public class ChatController {
         headers.set("Authorization", "Bearer sk-XXX"); // Reemplaza aquí tu token
 
         Map<String, Object> body = Map.of(
-            "model", "openai/gpt-3.5-turbo", // Modelo válido
+            "model", "openai/gpt-3.5-turbo",
             "messages", messages,
             "max_tokens", 500,
             "temperature", 0.7

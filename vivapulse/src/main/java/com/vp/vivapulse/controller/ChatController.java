@@ -11,7 +11,6 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/chat")
-@CrossOrigin(origins = "http://localhost:5173") // Permitir solicitudes desde el frontend
 public class ChatController {
 
     private final RestTemplate restTemplate;

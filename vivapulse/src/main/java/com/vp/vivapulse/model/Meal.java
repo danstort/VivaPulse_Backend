@@ -21,6 +21,9 @@ public class Meal {
     @Column(nullable = true) // Indica que este campo es opcional
     private String name;
 
+    @Version
+    private Long version;
+
     // Constructors
     public Meal() {}
 
@@ -71,6 +74,13 @@ public class Meal {
     }
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
 }

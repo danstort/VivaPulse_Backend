@@ -3,7 +3,9 @@ package com.vp.vivapulse.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vp.vivapulse.model.Meal;
 import com.vp.vivapulse.repository.MealRepository;
@@ -24,6 +26,10 @@ public class MealService {
 
     // Guardar una nueva comida
     public Meal saveMeal(Meal meal) {
+        if (meal.getIdUser() == null || meal.getIdAliment() == null || meal.getCalories() <= 0) {
+            throw new IllegalArgumentException("Invalid meal data");
+        }
+        meal.setVersion(1L); // Establece la versión inicial
         return mealRepository.save(meal);
     }
 
@@ -43,14 +49,24 @@ public class MealService {
     }
 
     // Actualizar una comida existente
-    public Meal updateMeal(Long id, Meal updatedMeal) {
+    @Transactional
+public Meal updateMeal(Long id, Meal updatedMeal) {
+    try {
         Meal existingMeal = mealRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Meal not found with id: " + id));
+
         existingMeal.setName(updatedMeal.getName());
         existingMeal.setCalories(updatedMeal.getCalories());
-        // Agrega aquí otros campos que quieras actualizar
+        existingMeal.setIdAliment(updatedMeal.getIdAliment());
+        existingMeal.setCreatedAt(updatedMeal.getCreatedAt());
+        existingMeal.setIdUser(updatedMeal.getIdUser());
+
         return mealRepository.save(existingMeal);
+
+    } catch (ObjectOptimisticLockingFailureException ex) {
+        throw new RuntimeException("La comida fue modificada por otro usuario. Por favor, recarga los datos e inténtalo de nuevo.", ex);
     }
+}
 
     // Eliminar una comida por su ID
     public void deleteMeal(Long id) {

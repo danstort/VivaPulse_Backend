@@ -36,7 +36,6 @@ public class TrainingService {
         Training existingTraining = trainingRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Training not found with id: " + id));
         existingTraining.setName(updatedTraining.getName());
-        existingTraining.setDuration(updatedTraining.getDuration());
         return trainingRepository.save(existingTraining);
     }
 

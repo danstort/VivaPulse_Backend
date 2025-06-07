@@ -45,6 +45,9 @@ public class User implements UserDetails{
     @OneToMany(mappedBy = "user")
     private List<Meal> meals;
 
+    @OneToMany(mappedBy = "user")
+    private List<Workout> workouts;
+
 
     @PrePersist
     public void prePersist() {

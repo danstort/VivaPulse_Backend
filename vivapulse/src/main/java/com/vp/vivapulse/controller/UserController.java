@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:5173") // Para permitir solicitudes desde React
 public class UserController {
     
-
+    
 }

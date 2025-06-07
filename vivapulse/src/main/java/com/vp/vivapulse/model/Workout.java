@@ -9,19 +9,23 @@ public class Workout {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long idUser;
-    private Long idTraining;
     private int totalCalories;
     private int time;
 
-   
-  
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "training_id")
+    private Training training;
+
     // Constructors
     public Workout() {}
 
-    public Workout(Long idUser, Long idTraining, int totalCalories, int time) {
-        this.idUser = idUser;
-        this.idTraining = idTraining;
+    public Workout(User user, Training training, int totalCalories, int time) {
+        this.user = user;
+        this.training = training;
         this.totalCalories = totalCalories;
         this.time = time;
     }
@@ -33,17 +37,17 @@ public class Workout {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setUser(User user) {
+        this.user = user;
     }
-    public Long getIdTraining() {
-        return idTraining;
+    public Training getTraining() {
+        return training;
     }
-    public void setIdTraining(Long idTraining) {
-        this.idTraining = idTraining;
+    public void setTraining(Training training) {
+        this.training = training;
     }
     public int getTotalCalories() {
         return totalCalories;

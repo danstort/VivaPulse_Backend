@@ -1,5 +1,7 @@
 package com.vp.vivapulse.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 
@@ -11,18 +13,19 @@ public class Training {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private int duration;
     private int caloriesBurned;
     private int nivelDificulta; 
     private String categoria;
     private String image;
+
+    @OneToMany(mappedBy = "training")
+    private List<Workout> workouts;
   
     // Constructors
     public Training() {}
 
-    public Training( String name, int duration, int caloriesBurned, int nivelDificulta, String image, String categoria) {
+    public Training( String name, int caloriesBurned, int nivelDificulta, String image, String categoria) {
         this.name = name;
-        this.duration = duration;
         this.caloriesBurned = caloriesBurned;
         this.nivelDificulta = nivelDificulta; 
         this.image = image;
@@ -43,12 +46,7 @@ public class Training {
     public void setId(Long id) {
         this.id = id;
     }
-    public int getDuration() {
-        return duration;
-    }
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
+    
     public String getName() {
         return name;
     }

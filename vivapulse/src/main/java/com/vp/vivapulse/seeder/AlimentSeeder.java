@@ -3,12 +3,14 @@ package com.vp.vivapulse.seeder;
 import com.vp.vivapulse.model.Aliment;
 import com.vp.vivapulse.repository.AlimentRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 
 
 
 @Component
+@Order(2)
 public class AlimentSeeder implements CommandLineRunner {
 
     private final AlimentRepository alimentRepository;

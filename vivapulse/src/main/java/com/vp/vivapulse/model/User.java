@@ -42,6 +42,10 @@ public class User implements UserDetails{
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    @OneToMany(mappedBy = "user")
+    private List<Meal> meals;
+
+
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();

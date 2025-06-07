@@ -13,7 +13,6 @@ public class Meal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long idUser;
     private Long[] idAliment;
     private int calories;
     private Date createdAt = new Date();
@@ -24,12 +23,16 @@ public class Meal {
     @Version
     private Long version;
 
+    @ManyToOne
+    @JoinColumn(name = "idUser")
+    private User user;
+
     // Constructors
     public Meal() {}
 
 
-    public Meal(Long idUser, Long[] idAliment, int calories, Date createdAt, String name) {
-        this.idUser = idUser;
+    public Meal(User user, Long[] idAliment, int calories, Date createdAt, String name) {
+        this.user = user;
         this.idAliment = idAliment;
         this.calories = calories;
         this.createdAt = createdAt;
@@ -42,12 +45,6 @@ public class Meal {
     }
     public void setId(Long id) {
         this.id = id;
-    }
-    public Long getIdUser() {
-        return idUser;
-    }
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
     }
     public Long[] getIdAliment() {
         return idAliment;
@@ -81,6 +78,14 @@ public class Meal {
     }
     public void setVersion(Long version) {
         this.version = version;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }

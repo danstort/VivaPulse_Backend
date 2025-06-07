@@ -10,5 +10,5 @@ import com.vp.vivapulse.model.Meal;
 @Repository
 public interface MealRepository extends JpaRepository<Meal, Long> {
 
-    List<Meal> findByIdUser(Long userId);
+    List<Meal> findByUserId(Long userId);
 }

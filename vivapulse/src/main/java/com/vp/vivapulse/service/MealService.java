@@ -26,7 +26,7 @@ public class MealService {
 
     // Guardar una nueva comida
     public Meal saveMeal(Meal meal) {
-        if (meal.getIdUser() == null || meal.getIdAliment() == null || meal.getCalories() <= 0) {
+        if (meal.getUser() == null || meal.getIdAliment() == null || meal.getCalories() <= 0) {
             throw new IllegalArgumentException("Invalid meal data");
         }
         meal.setVersion(1L); // Establece la versión inicial
@@ -41,7 +41,7 @@ public class MealService {
 
     // Obtener comidas por ID de usuario
     public List<Meal> getMealsByUserId(Long userId) {
-        List<Meal> meals = mealRepository.findByIdUser(userId);
+        List<Meal> meals = mealRepository.findByUserId(userId);
         if (meals.isEmpty()) {
             throw new RuntimeException("No meals found for user with id: " + userId);
         }
@@ -59,7 +59,7 @@ public Meal updateMeal(Long id, Meal updatedMeal) {
         existingMeal.setCalories(updatedMeal.getCalories());
         existingMeal.setIdAliment(updatedMeal.getIdAliment());
         existingMeal.setCreatedAt(updatedMeal.getCreatedAt());
-        existingMeal.setIdUser(updatedMeal.getIdUser());
+        existingMeal.setUser(updatedMeal.getUser());
 
         return mealRepository.save(existingMeal);
 

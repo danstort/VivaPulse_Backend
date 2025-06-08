@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.vp.vivapulse.model.Meal;
 import com.vp.vivapulse.repository.MealRepository;
 
-
-
 @Service
 public class MealService {
     @Autowired
@@ -50,23 +48,25 @@ public class MealService {
 
     // Actualizar una comida existente
     @Transactional
-public Meal updateMeal(Long id, Meal updatedMeal) {
-    try {
-        Meal existingMeal = mealRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Meal not found with id: " + id));
+    public Meal updateMeal(Long id, Meal updatedMeal) {
+        try {
+            Meal existingMeal = mealRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Meal not found with id: " + id));
 
-        existingMeal.setName(updatedMeal.getName());
-        existingMeal.setCalories(updatedMeal.getCalories());
-        existingMeal.setIdAliment(updatedMeal.getIdAliment());
-        existingMeal.setCreatedAt(updatedMeal.getCreatedAt());
-        existingMeal.setUser(updatedMeal.getUser());
+            existingMeal.setName(updatedMeal.getName());
+            existingMeal.setCalories(updatedMeal.getCalories());
+            existingMeal.setIdAliment(updatedMeal.getIdAliment());
+            existingMeal.setCreatedAt(updatedMeal.getCreatedAt());
+            existingMeal.setUser(updatedMeal.getUser());
 
-        return mealRepository.save(existingMeal);
+            return mealRepository.save(existingMeal);
 
-    } catch (ObjectOptimisticLockingFailureException ex) {
-        throw new RuntimeException("La comida fue modificada por otro usuario. Por favor, recarga los datos e inténtalo de nuevo.", ex);
+        } catch (ObjectOptimisticLockingFailureException ex) {
+            throw new RuntimeException(
+                    "La comida fue modificada por otro usuario. Por favor, recarga los datos e inténtalo de nuevo.",
+                    ex);
+        }
     }
-}
 
     // Eliminar una comida por su ID
     public void deleteMeal(Long id) {

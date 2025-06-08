@@ -1,4 +1,6 @@
 package com.vp.vivapulse.model;
+
+
 import jakarta.persistence.*;
 
 
@@ -61,6 +63,8 @@ public class Workout {
     public void setTime(int time) {
         this.time = time;
     }
+
+  
     
 
 

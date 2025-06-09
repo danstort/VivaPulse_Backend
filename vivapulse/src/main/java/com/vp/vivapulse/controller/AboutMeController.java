@@ -27,24 +27,26 @@ public class AboutMeController {
     }
 
     @GetMapping
-    public ResponseEntity<java.util.Map<String, String>> sayHello(@AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<java.util.Map<String, Object>> sayHello(@AuthenticationPrincipal UserDetails userDetails) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
+        Long id = userRepository.findByEmail(email)
+                .map(user -> user.getId())
+                .orElse(null);
         String firstName = userRepository.findByEmail(email)
                 .map(user -> user.getFirstName())
                 .orElse("Unknown");
-        
         String lastName = userRepository.findByEmail(email)
                 .map(user -> user.getLastName())
                 .orElse("Unknown");
 
-        //return ResponseEntity.ok("Email: " + email + ", First Name: " + firstName + ", Last Name: " + lastName);
         return ResponseEntity.ok().body(
             java.util.Map.of(
-            "email", email,
-            "firstName", firstName,
-            "lastName", lastName
+                "id", id,
+                "email", email,
+                "firstName", firstName,
+                "lastName", lastName
             )
         );
     }

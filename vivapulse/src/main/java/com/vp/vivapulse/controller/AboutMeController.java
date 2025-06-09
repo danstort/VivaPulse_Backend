@@ -40,13 +40,18 @@ public class AboutMeController {
         String lastName = userRepository.findByEmail(email)
                 .map(user -> user.getLastName())
                 .orElse("Unknown");
+        String role = userDetails.getAuthorities().stream()
+                .findFirst()
+                .map(auth -> auth.getAuthority())
+                .orElse("Unknown");
 
         return ResponseEntity.ok().body(
             java.util.Map.of(
                 "id", id,
                 "email", email,
                 "firstName", firstName,
-                "lastName", lastName
+                "lastName", lastName,
+                "role", role
             )
         );
     }

@@ -30,7 +30,8 @@ public class ChatController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Authorization", "Bearer sk-XXX"); // Reemplaza aquí tu token
+        headers.set("Authorization", "Bearer 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"); // Reemplaza aquí tu token
+        headers.set("HTTP-Referer", "https://vivapulsefront.vercel.app"); // o el dominio real si ya lo tienes
 
         Map<String, Object> body = Map.of(
             "model", "openai/gpt-3.5-turbo",

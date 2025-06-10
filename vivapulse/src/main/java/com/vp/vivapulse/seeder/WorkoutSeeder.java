@@ -1,5 +1,7 @@
 package com.vp.vivapulse.seeder;
 
+import java.util.Date;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -37,15 +39,15 @@ public class WorkoutSeeder implements CommandLineRunner{
             Training training3 = new Training();
             training3.setId(3L);
 
-            workoutRepository.save(new Workout(user1, training1, 500, 30));
-            workoutRepository.save(new Workout(user1, training2, 600, 45));
-            workoutRepository.save(new Workout(user1, training3, 700, 60));
-            workoutRepository.save(new Workout(user2, training1, 450, 25));
-            workoutRepository.save(new Workout(user2, training2, 550, 35));
-            workoutRepository.save(new Workout(user2, training3, 650, 50));
-            workoutRepository.save(new Workout(user3, training1, 400, 20));
-            workoutRepository.save(new Workout(user3, training2, 500, 30));
-            workoutRepository.save(new Workout(user3, training3, 600, 40));
+            workoutRepository.save(new Workout(user1, training1, 500, 30,  new Date()));
+            workoutRepository.save(new Workout(user1, training2, 600, 45,  new Date()));
+            workoutRepository.save(new Workout(user1, training3, 700, 60,  new Date()));
+            workoutRepository.save(new Workout(user2, training1, 450, 25,  new Date()));
+            workoutRepository.save(new Workout(user2, training2, 550, 35,  new Date()));
+            workoutRepository.save(new Workout(user2, training3, 650, 50,  new Date()));
+            workoutRepository.save(new Workout(user3, training1, 400, 20,  new Date()));
+            workoutRepository.save(new Workout(user3, training2, 500, 30,  new Date()));
+            workoutRepository.save(new Workout(user3, training3, 600, 40,  new Date()));
             
             System.out.println("Workouts seeded successfully.");
         } else {

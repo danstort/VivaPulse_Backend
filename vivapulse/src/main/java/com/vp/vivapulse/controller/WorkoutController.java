@@ -75,6 +75,7 @@ public class WorkoutController {
         dto.setId(workout.getId());
         dto.setTotalCalories(workout.getTotalCalories());
         dto.setTime(workout.getTime());
+        dto.setCreatedAt(workout.getCreatedAt()); // <-- Añade esto
 
         // Convert User to UserDTO
         if (workout.getUser() != null) {
@@ -103,6 +104,7 @@ public class WorkoutController {
         workout.setId(dto.getId());
         workout.setTotalCalories(dto.getTotalCalories());
         workout.setTime(dto.getTime());
+        workout.setCreatedAt(dto.getCreatedAt()); // <-- Añade esto
 
         // Convert UserDTO to User
         if (dto.getUser() != null) {

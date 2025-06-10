@@ -47,6 +47,7 @@ public class WorkoutService {
         existingWorkout.setTime(updatedWorkout.getTime());
         existingWorkout.setUser(updatedWorkout.getUser());
         existingWorkout.setTraining(updatedWorkout.getTraining());
+        existingWorkout.setCreatedAt(updatedWorkout.getCreatedAt());
         
         return workoutRepository.save(existingWorkout);
     }

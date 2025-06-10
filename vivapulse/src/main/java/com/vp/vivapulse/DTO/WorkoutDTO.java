@@ -1,5 +1,7 @@
 package com.vp.vivapulse.DTO;
 
+import java.util.Date;
+
 public class WorkoutDTO {
     
     private Long id;
@@ -7,15 +9,17 @@ public class WorkoutDTO {
     private int time;
     private UserDTO user;
     private TrainingDTO training;
+    private Date createdAt;
 
     public WorkoutDTO() {}
 
-    public WorkoutDTO(Long id, int totalCalories, int time, UserDTO user, TrainingDTO training) {
+    public WorkoutDTO(Long id, int totalCalories, int time, UserDTO user, TrainingDTO training, Date createdAt) {
         this.id = id;
         this.totalCalories = totalCalories;
         this.time = time;
         this.user = user;
         this.training = training;
+        this.createdAt = createdAt;
     }
 
     public Long getId() {
@@ -56,6 +60,12 @@ public class WorkoutDTO {
 
     public void setTraining(TrainingDTO training) {
         this.training = training;
+    }
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     

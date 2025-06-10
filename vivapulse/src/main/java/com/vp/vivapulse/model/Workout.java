@@ -1,6 +1,8 @@
 package com.vp.vivapulse.model;
 
 
+import java.util.Date;
+
 import jakarta.persistence.*;
 
 
@@ -13,6 +15,9 @@ public class Workout {
     private Long id;
     private int totalCalories;
     private int time;
+    private Date createdAt = new Date();
+
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -25,11 +30,12 @@ public class Workout {
     // Constructors
     public Workout() {}
 
-    public Workout(User user, Training training, int totalCalories, int time) {
+    public Workout(User user, Training training, int totalCalories, int time, Date createdAt) {
         this.user = user;
         this.training = training;
         this.totalCalories = totalCalories;
         this.time = time;
+        this.createdAt = createdAt;
     }
 
     // Getters and Setters
@@ -63,9 +69,11 @@ public class Workout {
     public void setTime(int time) {
         this.time = time;
     }
-
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
   
-    
-
-
 }

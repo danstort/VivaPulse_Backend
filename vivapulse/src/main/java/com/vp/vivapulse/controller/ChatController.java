@@ -35,8 +35,8 @@ public class ChatController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Authorization", "Bearer " + apiToken); 
-        headers.set("HTTP-Referer", "https://vivapulsefront.vercel.app"); 
+        headers.set("Authorization", "Bearer " + apiToken);
+        headers.set("HTTP-Referer", "https://vivapulsefront.vercel.app");
 
         // Primero, construye la lista de mensajes
         // Luego, usa esa lista al construir el body del Map

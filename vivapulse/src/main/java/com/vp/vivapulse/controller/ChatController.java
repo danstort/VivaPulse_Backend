@@ -41,7 +41,7 @@ public class ChatController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Bearer " + apiToken);
-        headers.set("HTTP-Referer", "http://localhost:5173");
+        headers.set("HTTP-Referer", "https://vivapulsefront.vercel.app");
 
         Map<String, Object> body = new HashMap<>();
         body.put("model", "deepseek/deepseek-r1-0528-qwen3-8b:free");

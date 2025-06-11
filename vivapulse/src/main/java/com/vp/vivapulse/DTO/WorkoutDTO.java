@@ -9,7 +9,7 @@ public class WorkoutDTO {
     private int time;
     private UserDTO user;
     private TrainingDTO training;
-    private Date createdAt;
+    private Date createdAt = new Date();
 
     public WorkoutDTO() {}
 

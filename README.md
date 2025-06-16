@@ -28,3 +28,8 @@ https://github.com/davidp209/vivapulsefront
 
 ### Web Desplegada
 https://vivapulsefront.vercel.app/
+
+## Licencia
+
+VivaPulse © 2025 de Daniel Soto Ortiz y David Paredes Ortuño está licenciado bajo Creative Commons Attribution-ShareAlike 4.0 International. Para ver una copia de esta licencia, visite https://creativecommons.org/licenses/by-sa/4.0/ 
+

@@ -15,18 +15,22 @@ Este repositorio contiene el backend de **VivaPulse**, una aplicación web dise�
 - **Render** (plataforma de hosting)
 
 ##  Estructura del proyecto
-src/
-├── main/
-│   ├── java/
-│   │   └── com/vivapulse/backend/
-│   │       ├── controller/       # Controladores REST
-│   │       ├── service/          # Lógica de negocio
-│   │       ├── repository/       # Acceso a datos
-│   │       └── model/            # Entidades JPA
-│   └── resources/
-│       └── application.properties
-├── test/                         # Pruebas unitarias (opcional)
-└── pom.xml                       # Archivo de configuración de Maven
+vivapulse-backend/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── vivapulse/
+│   │   │           └── backend/
+│   │   │               ├── controller/     # Controladores REST
+│   │   │               ├── service/        # Lógica de negocio
+│   │   │               ├── repository/     # Acceso a datos
+│   │   │               └── model/          # Entidades JPA
+│   │   └── resources/
+│   │       └── application.properties      # Configuración de Spring Boot
+│
+├── test/                                   # Pruebas unitarias (opcional)
+└── pom.xml                                 # Archivo de configuración de Maven
 
 ## Configuración local
 

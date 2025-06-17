@@ -13,7 +13,7 @@ import java.util.*;
 @RequestMapping("/api/chat")
 public class ChatController {
 
-    private String apiToken ="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";
+    private String apiToken ="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";
     
 
     private final RestTemplate restTemplate;
